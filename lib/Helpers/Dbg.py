@@ -1,3 +1,5 @@
+from lib.Helpers.Properties import Properties
+
 
 class Dbg:
     def __init__(self):
@@ -5,15 +7,18 @@ class Dbg:
 
     @staticmethod
     def log(msg):
-        print("[ LOG ] %s" % str(msg))
+        if Properties.get('log_level') == 'log' or Properties.get('log_level') == 'debug' :
+            print("[ LOG ] %s" % str(msg))
 
     @staticmethod
     def err(msg):
-        print("[ ERROR ] %s" % str(msg))
+        if Properties.get('log_level') == 'error':
+            print("[ ERROR ] %s" % str(msg))
 
     @staticmethod
     def dbg(msg):
-        print("[ DEBUG ] %s" % str(msg))
+        if Properties.get('log_level') == 'debug':
+            print("[ DEBUG ] %s" % str(msg))
 
 
 class Colorized:

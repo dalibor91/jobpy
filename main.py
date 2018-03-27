@@ -1,4 +1,4 @@
-from os import path
+from os import path, getenv
 from sys import argv, exit
 from lib.args import process_args
 from lib.Helpers import Properties
@@ -8,6 +8,7 @@ from lib.Database import check_database
 
 APP_ROOT=path.dirname(path.abspath(__file__))
 
+Properties.set("log_level", getenv('log_level'))
 Properties.set("app_root", APP_ROOT)
 Properties.set("app_name", "jobpy")
 Properties.set("config_file", "%s/config.ini" % APP_ROOT)
