@@ -1,0 +1,6 @@
+CREATE TABLE job_properties(
+  `name` VARCHAR(255) NOT NULL,
+  `value` VARCHAR(255) DEFAULT NULL,
+  `description` TEXT DEFAULT NULL,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP
+);
