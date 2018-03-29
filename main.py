@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from os import path, getenv
 from sys import argv, exit
 from lib.args import process_args

@@ -50,7 +50,6 @@ class Server:
 
     def shutdown(self, s, f):
         print("Stop server: %s" % str(s))
-        print("Connections: %d" % len(self.threads))
         self.stop_server = True
         self.__cleanup__()
         sys.exit()
