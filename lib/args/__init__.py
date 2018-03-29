@@ -1,5 +1,5 @@
 import importlib
-from lib.Helpers.Dbg import Colorized
+from lib.Helpers.Dbg import Colorized, Dbg
 
 def process_args(argv):
     import_module = 'help'
@@ -8,10 +8,11 @@ def process_args(argv):
 
     try:
         mdl = importlib.import_module('lib.args.args.%s' % str(import_module))
-    except:
+    except Exception as e:
         mdl = importlib.import_module('lib.args.args.help')
         if len(argv) > 0:
             Colorized.red("Unknown command '%s'" % " ".join(argv))
+        Dbg.err(str(e))
     mdl.process(argv[1:])
 
 

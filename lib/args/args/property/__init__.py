@@ -6,8 +6,9 @@ __app_name = Properties.get('app_name')
 
 main_desc = """Managers properties for jobs 
 Options:
-    add             - Name of property   - REQUIRED
-    remove          - Remove property    - REQUIRED
+    add             - Name of property
+    remove          - Remove property 
+    list            - List all properties
     --name          - Name of property   - REQUIRED
     
     --value         - Default value 

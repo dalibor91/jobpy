@@ -28,3 +28,7 @@ class Colorized:
     @staticmethod
     def red(msg):
         print("\u001b[31m%s\u001b[0m" % msg)
+
+    @staticmethod
+    def green(msg):
+        print("\u001b[32m%s\u001b[0m" % msg)

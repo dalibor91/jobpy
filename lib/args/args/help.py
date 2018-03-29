@@ -6,6 +6,8 @@ Options:
     update     - Print help message for update
     remove     - Print help message for remove
     property   - Print help message for property 
+    
+    daemon     - Print help message for daemon
 """.strip()
 
 def process(argv):

@@ -33,3 +33,9 @@ def __create_sqlite(path):
             cursor.execute(tbl_read.read())
             cursor.close()
 
+    for file in listdir("%s/insert" % database_dir):
+        Dbg.log("Filling data %s" % file)
+        with open("%s/insert/%s" % (database_dir, file), 'r') as tbl_read:
+            cursor = conn.cursor()
+            cursor.execute(tbl_read.read())
+            cursor.close()

@@ -24,12 +24,15 @@ class Properties:
     def set(name, val):
         Properties.__data(name, val)
 
-
     @staticmethod
     def get(name):
         if Properties.has(name):
             return Properties.__data()[name]
         return None
+
+    @staticmethod
+    def data():
+        return Properties.__data()
 
 
 class ConfigFile:
