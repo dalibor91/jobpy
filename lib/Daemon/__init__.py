@@ -99,26 +99,26 @@ def print_status():
     scheduler_pid = Config.get('default', 'scheduler_pid_file')
 
     if not os.path.isfile(pid_file):
-        Colorized.red("Daemon is not running")
+        Colorized.red("Daemon    : FAIL")
     else:
         try :
             with open(pid_file) as f:
                 pid = (f.read())
                 os.kill(int(pid.strip()), 0)
-                Colorized.green("Daemon is running")
+                Colorized.green("Daemon    : OK")
         except Exception as e:
-            Colorized.red("Daemon is not running")
+            Colorized.red("Daemon    : FAIL")
 
     if not os.path.isfile(scheduler_pid):
-        Colorized.red("Scheduler is not running")
+        Colorized.red("Scheduler : FAIL")
     else:
         try :
             with open(scheduler_pid) as f:
                 pid = (f.read())
                 os.kill(int(pid.strip()), 0)
-                Colorized.green("Scheduler is running")
+                Colorized.green("Scheduler : OK")
         except Exception as e:
-            Colorized.red("Scheduler is not running")
+            Colorized.red("Scheduler : FAIL")
 
 
 
