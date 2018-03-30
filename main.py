@@ -18,6 +18,7 @@ Properties.set("templates_dir", "%s/lib/tpl" % APP_ROOT)
 Properties.set("database_dir", "%s/lib/tpl/database" % APP_ROOT)
 Properties.set("default_config", "%s/lib/tpl/config/properties.ini" % APP_ROOT)
 Properties.set("version", Config.get('info', 'version'))
+Properties.set("socket_file", Config.get('default', 'socket_file'))
 
 Dbg.log("App Version    %s" % Properties.get('version'))
 Dbg.log("App Root       %s" % Properties.get('app_root'))

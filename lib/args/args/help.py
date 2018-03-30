@@ -8,6 +8,7 @@ Options:
     property   - Print help message for property 
     
     daemon     - Print help message for daemon
+    test       - Print help message for daemon test
 """.strip()
 
 def process(argv):

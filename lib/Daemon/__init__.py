@@ -10,7 +10,7 @@ def __handler__(data, client, address):
 
 def __daemon__():
     import lib.Daemon.Server as Server
-    srv = Server.Server(Config.get('default', 'socket_file'))
+    srv = Server.Server(Properties.get('socket_file'))
     srv.setCallback(__handler__)
     srv.listen()
 
