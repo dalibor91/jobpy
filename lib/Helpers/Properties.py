@@ -48,6 +48,13 @@ class ConfigFile:
         return ConfigFile.__get_ini()
 
     @staticmethod
+    def reload():
+        if hasattr(ConfigFile, 'ini_data'):
+            delattr(ConfigFile, 'ini_data')
+
+        return ConfigFile.data()
+
+    @staticmethod
     def __get_ini():
         if hasattr(ConfigFile, 'ini_data'):
             return getattr(ConfigFile, 'ini_data')

@@ -8,7 +8,7 @@ main_desc = """Manages daemon
 Options:
     start       - Starts daemon
     stop        - Stops daemon
-    restart     - Restartes daemon
+    restart     - Restarts daemon
     status      - Status of daemon
     
     --help      - This message 
@@ -37,6 +37,7 @@ def process(argv):
             Colorized.red("Unknown command '%s'" % str(argv[0]))
 
     except Exception as e:
+        print(str(e))
         Colorized.red("There is an error")
         Dbg.err(str(e))
     return True

@@ -1,4 +1,4 @@
-INSERT INTO `job_properties`
+INSERT INTO `attribute`
 (`name`, `value`) VALUES
 ('email_fail', NULL),
 ('email_success', NULL),

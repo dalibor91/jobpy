@@ -7,17 +7,17 @@ class Dbg:
 
     @staticmethod
     def log(msg):
-        if Properties.get('log_level') == 'log' or Properties.get('log_level') == 'debug' :
-            print("[ LOG ] %s" % str(msg))
+        if Properties.get('log_level') == 'INFO' or Properties.get('log_level') == 'DEBUG' :
+            print("[ INFO  ] %s" % str(msg))
 
     @staticmethod
     def err(msg):
-        if Properties.get('log_level') == 'error':
+        if Properties.get('log_level') == 'ERROR':
             print("[ ERROR ] %s" % str(msg))
 
     @staticmethod
     def dbg(msg):
-        if Properties.get('log_level') == 'debug':
+        if Properties.get('log_level') == 'DEBUG':
             print("[ DEBUG ] %s" % str(msg))
 
 

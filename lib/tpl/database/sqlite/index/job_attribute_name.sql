@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX `name` ON `attribute`(`name`);

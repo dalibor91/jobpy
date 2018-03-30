@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX `job_attribute` ON `job_has_attribute`(`job_id`, `attribute_id`);

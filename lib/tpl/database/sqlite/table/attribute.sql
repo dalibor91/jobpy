@@ -1,4 +1,4 @@
-CREATE TABLE job_properties(
+CREATE TABLE attribute(
   `name` VARCHAR(255) NOT NULL,
   `value` VARCHAR(255) DEFAULT NULL,
   `description` TEXT DEFAULT NULL,

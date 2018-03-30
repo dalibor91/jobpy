@@ -1,1 +1,0 @@
-CREATE UNIQUE INDEX `name` ON `job_properties`(`name`);
