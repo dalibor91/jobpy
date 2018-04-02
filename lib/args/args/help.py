@@ -2,13 +2,9 @@ main_desc="""Smart task scheduler for running scripts
 on unix based systems 
 Options:
     help       - Print this help message 
-    add        - Print help message for add 
-    update     - Print help message for update
-    remove     - Print help message for remove
-    property   - Print help message for property 
-    
     daemon     - Print help message for daemon
-    test       - Print help message for daemon test
+    job        - Print help message for job manipulation
+    list       - Print help message for listing
 """.strip()
 
 def process(argv):

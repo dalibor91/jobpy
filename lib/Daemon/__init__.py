@@ -1,6 +1,7 @@
 import os
 import sys
 from signal import SIGINT
+from time import sleep
 from daemonize import Daemonize
 from lib.Helpers import Properties, Config, Colorized
 from lib.Daemon.Controller import Controller
@@ -92,6 +93,7 @@ def stop_daemon():
 
 def restart_daemon():
     stop_daemon()
+    sleep(5)
     start_daemon()
 
 def print_status():

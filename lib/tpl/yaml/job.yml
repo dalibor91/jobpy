@@ -1,0 +1,101 @@
+# this is name of job
+# it must be unique and can contain only letters, numbers and - and _
+name : "%%job_name%%"
+
+# this is unique identifier for this job
+# can be used to trace logs for this specific job
+uuid : "%%uuid%%"
+
+# is job active - ready to run
+# useful when testing and not wanting scheduler to pick it up
+# do not remove this comment line bellow, it's used when automatically enabling activation
+active: 0
+
+# this is how offten you want this yaml to be run
+# values can be expressed in
+# minutes , days, weeks , months
+# 1m - min, 1d - day, 1w - week, 1M
+run_each: "1d"
+
+# starting from this time yaml will be active
+from: "%%date_now%%"
+
+# yaml will run until this datetime is reached
+# leave empty if end date is not defined
+until: ""
+
+# should yaml wait for itself and only have one instance
+# running at the time
+one_instance: "Y"
+
+# job will be run as this user
+user: "root"
+
+# job will be run as this group
+group: "root"
+
+# this command will be executed
+# when yaml is run
+command: >
+  for i in $(seq 1 1000);
+  do
+    echo "This is echo ${i}"
+  done
+# The discription of yaml
+description: >
+  This is some description of what this job is doing
+
+# Settings/attributes/properties
+# of yaml
+# for example what to do when yaml is done
+attributes:
+
+  email_fail:
+    enabled: 0
+    value: "test@test.com"
+    description: >
+      This value is used to send email to when job fails
+
+  email_success:
+    enabled: 0
+    value: ""
+    description: >
+      This value is used to send email when job fails
+
+  job_fail:
+    enabled: 0
+    value: ""
+    description: >
+      This command is executed when job was successful after it
+
+  job_success:
+    enabled: 0
+    value: ""
+    description: >
+      This command is executed when job was not successful, after it
+
+  start_job_success:
+    enabled: 0
+    value: ''
+    description: >
+      List of jobs separated by "," that you want to start if job run was successful
+
+  start_job_fail:
+    enabled: 0
+    value: ''
+    description: >
+      List of jobs separated by "," that you want to start if job run was not successful
+
+  start_job_success_waittime:
+    enabled: 0
+    value:
+    description: >
+      Time in seconds to wait before we run attribute "start_job_success"
+
+  start_job_fail_waittime:
+    enabled: 0
+    value: 0
+    description: >
+      Time in seconds to wait before we run attribute "start_job_fail"
+
+

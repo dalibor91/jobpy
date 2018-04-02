@@ -33,7 +33,6 @@ class Controller:
                     return self._ok_(a())
 
                 except Exception as e:
-                    raise e
                     return self._err_(str(e))
 
                 return self._err("module %s action %s not found" % (controller, action))
