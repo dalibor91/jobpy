@@ -19,9 +19,6 @@ until: ""
 # How many instances can be run at the same time
 instances: 1
 
-# Log file name
-log_file: "%%job_name%%.log"
-
 # Run as user
 user: "root"
 
@@ -33,6 +30,7 @@ command: >
   for i in $(seq 1 1000);
   do
     echo "This is echo ${i}"
+    sleep 1
   done
 
 # Description of job

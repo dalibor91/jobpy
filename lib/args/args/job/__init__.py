@@ -10,7 +10,8 @@ Options:
     remove      (--name <name>)  - Remove job 
     activate    (--name <name>)  - Activate job 
     deactivate  (--name <name>)  - Deactivate job
-
+    run         (--name <name>)  - Run job 
+    
     --help            - This message
 
 Example:
@@ -46,6 +47,8 @@ def process(argv):
                 action = 'activate'
             elif argv[0] == 'deactivate':
                 action = 'deactivate'
+            elif argv[0] == 'run':
+                action = 'run'
             else:
                 raise Exception("Unknown command")
 

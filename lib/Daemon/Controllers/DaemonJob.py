@@ -1,9 +1,11 @@
 from datetime import datetime
 from lib.Helpers.Properties import Properties
+from lib.Daemon.Container import new_container
 import re
 import os
 import uuid
 import yaml
+
 
 class DaemonJob:
     def __init__(self, data):
@@ -15,6 +17,18 @@ class DaemonJob:
 
     def default(self):
         return "Default called"
+
+    def action_run(self):
+        name = self.data
+
+        job_file = "%s/%s.yml" % (Properties.get('jobs_dir'), name)
+
+        if not os.path.exists(job_file):
+            raise Exception("Job: %s doesn't exists" % job_file)
+
+        new_container(name)
+        return "Started"
+
 
     def action_new(self):
         name = self.data
