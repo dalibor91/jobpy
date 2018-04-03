@@ -1,46 +1,59 @@
-# Name of job
-name : "%%job_name%%"
+# this is name of job
+# it must be unique and can contain only letters, numbers and - and _
+name : "test"
 
-# Unique identifier - auto generated
-uuid : "%%uuid%%"
+# this is unique identifier for this job
+# can be used to trace data for this specific job
+uuid : "c79988f0-3736-11e8-a9a8-0242ac110003"
 
-# Is job active - 0 = no , 1 = yes
+# is job active - ready to run
+# useful when testing and not wanting scheduler to pick it up
+# do not remove this comment line bellow, it's used when automatically enabling activation
 active: 0
 
-# How often do we want to run it 1m - minute, 1h - hour, 1d - day, 1w - week, 1m - month
+# this is how offten you want this yaml to be run
+# values can be expressed in
+# minutes , days, weeks , months
+# 1m - min, 1d - day, 1w - week, 1M
 run_each: "1d"
 
-# Start from this date
-from: "%%date_now%%"
+# starting from this time yaml will be active
+from: "2018-04-03 12:01:45"
 
-# Run until this date
+# yaml will run until this datetime is reached
+# leave empty if end date is not defined
 until: ""
 
-# How many instances can be run at the same time
-instances: 1
+# should yaml wait for itself and only have one instance
+# running at the time
+one_instance: "Y"
 
-# Log file name
-log_file: "%%job_name%%.log"
+# log file name
+log_file: "test.log"
 
-# Run as user
+# job will be run as this user
 user: "root"
 
-# Run as group
+# job will be run as this group
 group: "root"
 
-# Command to run
+# this command will be executed
+# when yaml is run
 command: >
-  for i in $(seq 1 1000);
+  for i in $(seq 1 4);
   do
-    echo "This is echo ${i}"
+    echo "This is echo ${i}";
+    sleep 1
   done
-
-# Description of job
+# The discription of yaml
 description: >
   This is some description of what this job is doing
 
 # Settings/attributes/properties
+# of yaml
+# for example what to do when yaml is done
 attributes:
+
   email_fail:
     enabled: 0
     value: "test@test.com"
@@ -88,3 +101,5 @@ attributes:
     value: 0
     description: >
       Time in seconds to wait before we run attribute "start_job_fail"
+
+
