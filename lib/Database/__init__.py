@@ -3,6 +3,9 @@ from os import listdir
 from lib.Helpers.Dbg import Dbg
 from lib.Helpers.Properties import Properties
 
+def __check():
+    pass
+
 def check_database(config):
     Dbg.log("Checking database")
     if config.get('database', 'type') == 'sqlite':
@@ -11,6 +14,8 @@ def check_database(config):
             Dbg.log("Database found '%s'" % config.get('database', 'database'))
         else:
             __create_sqlite(config.get('database', 'database'))
+
+    __check()
 
 
 def __create_sqlite(path):

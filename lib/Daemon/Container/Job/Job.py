@@ -1,6 +1,7 @@
 import os
 import yaml
 from lib.Helpers.Properties import Properties
+from lib.Daemon.Container.Job.DBJob import DBJob
 
 class Job:
     data = {
@@ -16,6 +17,8 @@ class Job:
 
     __yaml_data     = None
     __yaml_data__   = None
+
+    __db_job        = None
 
     def __init__(self, name):
         file_dest = "%s/%s.yml" %(Properties.get('jobs_dir'), name)
@@ -37,3 +40,8 @@ class Job:
     def attribute(self, name):
         return self.config('attributes')[name]
 
+    def db(self):
+        if self.__db_job is None:
+            self.__db_job = DBJob(self.config('uuid'))
+
+        return self.__db_job

@@ -45,7 +45,9 @@ def start_daemon():
             app=app_name,
             pid=pid_file,
             action=__daemon__,
-            keep_fds = []
+            keep_fds = []#,
+            #verbose = True,
+            #foreground = True
         ).start()
         sys.exit(0)
     else:
@@ -58,7 +60,7 @@ def start_daemon():
             Daemonize(
                 app=app_name,
                 pid=scheduler_pid,
-                action=__daemon__,
+                action=__scheduler__,
                 keep_fds = []#,
                 #verbose = True,
                 #foreground = True

@@ -11,8 +11,10 @@ Options:
     activate    (--name <name>)  - Activate job 
     deactivate  (--name <name>)  - Deactivate job
     run         (--name <name>)  - Run job 
+    logs	(--date <date>)  - Get logs
+    history     (--name <name>)  - History of runs
     
-    --help            - This message
+    --help      - This message
 
 Example:
     %s job add        --name test_job
@@ -49,6 +51,10 @@ def process(argv):
                 action = 'deactivate'
             elif argv[0] == 'run':
                 action = 'run'
+            elif argv[0] == 'logs':
+                action = 'logs'
+            elif argv[0] == 'history':
+                action = 'history'
             else:
                 raise Exception("Unknown command")
 

@@ -1,5 +1,6 @@
 from datetime import datetime
 from lib.Helpers.Properties import Properties
+from lib.Daemon.Container.Job import Job, Status
 from lib.Daemon.Container import new_container
 import re
 import os
@@ -86,7 +87,7 @@ class DaemonJob:
                     except Exception as e:
                         raise Exception("Error in %s , message: %s" % ("%s/%s" %(dir,job_file), str(e)))
 
-        return "Jobs:\n\t" + "\n\t".join(filtered)
+        return "\n".join(filtered)
 
 
     def action_activate(self):
@@ -137,3 +138,24 @@ class DaemonJob:
                 return "Deactivated: %s" % name
 
         raise Exception("Not activated, unable to find 'active: 1'")
+
+
+    #not visible to cmd
+    def action_last_success(self):
+        job = Job.Job(self.data)
+        return job.db().last_status(Status.FINISHED)
+
+    #not visible to cmd
+    def action_should_run(self):
+        job = Job.Job(self.data)
+        return job.db().last_status(Status.FAILED)
+
+    def action_logs(self):
+        return "Logs of cronjob"
+
+    def action_history(self):
+        job = Job.Job(self.data)
+        return job.db().last_status(Status.FINISHED)
+
+
+

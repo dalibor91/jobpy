@@ -1,30 +1,32 @@
+import sqlite3
+import os
 from lib.Helpers import Config, Properties
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 
-class Connection:
-
-    __sqlite_engine = None
-
+class Connection():
     def __init__(self):
-        self.database = Config.get('database', 'database')
-        self.type = Config.get('database', 'type')
+        self.file_location = Config.get('database', 'database')
+        self.__connection = None
 
+    def getConnection(self):
+        if self.__connection is None:
+            self.reconnect()
 
-    def get_engine(self, cached=True):
-        if self.type == 'sqlite':
-            if self.__sqlite_engine is None:
-                self.__sqlite_engine = self.__get_sqlite()
-            return self.__sqlite_engine if cached else self.__get_sqlite()
+        return self.__connection
 
+    def reconnect(self):
+        self.__connection = sqlite3.connect(self.file_location)
+        self.__connection.row_factory = self.__rf
 
-    def get_sesson(self, cached=True):
-        return sessionmaker(bind=self.get_engine(cached))
+    def close(self):
+        self.getConnection().close()
+        self.__connection = None
 
+    def exists(self):
+        return os.path.isfile(self.file_location)
 
-    def __logging(self):
-        return Properties.get('log_level') == 'log'
-
-
-    def __get_sqlite(self):
-        return create_engine('sqlite://%s'%self.database, echo=self.__logging())
+    #row factory
+    def __rf(self, cursor, row):
+        d = {}
+        for idx, col in enumerate(cursor.description):
+            d[col[0]] = row[idx]
+        return d

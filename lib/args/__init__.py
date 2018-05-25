@@ -37,7 +37,7 @@ class __Property__:
 
     def get_subproperty(self, char='='):
         p = Property()
-        data = self.get_value().split('=', 1)
+        data = self.get_value().split(char, 1)
         if len(data) != 2:
             raise Error("Can not get subproperty")
 

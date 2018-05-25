@@ -7,6 +7,9 @@ from lib.Daemon.Container.Job.Runner import Runner
 
 
 def new_container(name):
+    #need to implement reaper
+    #that will reap zombies created
+    #like this
     if os.fork() == 0:
         app_name = "name_%s" % str(datetime.datetime.now().strftime('%s'))
         lock_dir = "%s/%s" % (Properties.get('lock_dir'), name)
@@ -24,19 +27,8 @@ def new_container(name):
 
         app_pid = "%s/%d.pid" % (lock_dir, pid)
 
-        def __run_in_container__():
-            runner = Runner(name, app_pid, log_file)
-            runner.run()
-
-
-        Daemonize(
-            app=app_name,
-            pid=app_pid,
-            action=__run_in_container__,
-            keep_fds=[]#,
-            #verbose = True,
-            #foreground = True
-        ).start()
-        sys.exit()
+        runner = Runner(name, app_pid, log_file)
+        runner.run()
+        sys.exit(0)
 
 

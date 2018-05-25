@@ -5,7 +5,7 @@ name : "test"
 uuid : "7bda6506-374f-11e8-a5ee-0242ac110003"
 
 # Is job active - 0 = no , 1 = yes
-active: 0
+active: 1
 
 # How often do we want to run it 1m - minute, 1h - hour, 1d - day, 1w - week, 1m - month
 run_each: "1d"
@@ -27,11 +27,8 @@ group: "root"
 
 # Command to run
 command: >
-  for i in $(seq 1 1000);
-  do
-    echo "This is echo ${i}"
-    sleep 1
-  done
+  echo "joj";
+  exit 1
 
 # Description of job
 description: >
